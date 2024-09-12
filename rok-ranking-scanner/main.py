@@ -81,47 +81,6 @@ def top123(x, y, n): # whole process inside a function to do the top1-2-3 then l
 
     #no checks for top3 players (we assume their profiles are available)
     process_gov(n)
-    return
-
-    govgen = device.takeSnapshot(reconnect=True)
-    govgen.save(os.getcwd()+'\screens\\'+str(n)+'gov.png')
-    time.sleep(0.1)
-
-    device.shell('input tap 800 340') #tap on name to copy on clipboard
-    time.sleep(0.5) #wait for copy
-
-    """
-    device.shell('input tap 1340 380') #tap on detailed kills
-    #device.shell('input tap 1337 423') #tap on detailed kills
-    time.sleep(1) #wait for GUI to load :)
-
-    govkills = device.takeSnapshot(reconnect=True)
-    govkills.save(os.getcwd()+'\screens\\'+str(n)+'govkills.png')
-    time.sleep(0.1)
-
-    #device.shell('input tap 465 790') #open more info tab
-    device.shell('input tap 430 890') #open more info tab
-    time.sleep(0.4) #wait for GUI to load :)
-
-    govinfo = device.takeSnapshot(reconnect=True)
-    govinfo.save(os.getcwd()+'\screens\\'+str(n)+'govinfo.png')
-    time.sleep(0.1)
-    """
-
-    name = clipboard.paste() #save clipboard to variable
-
-    """
-    device.shell('input tap 1670 75') #close more info tab
-    time.sleep(0.5) #wait for GUI to load :)
-    """
-
-    device.shell('input tap 1619 140') #close governor profile
-    time.sleep(0.5) #wait for GUI to load :)
-
-    subprocess.Popen(['python', 'reader.py', str(n), name, timestr])
-    #subprocess.Popen(['reader.exe', str(n), name, timestr])
-    end_time = time.perf_counter()
-    print(f'It took {end_time-start_time: 0.2f} second(s) to complete.')
 
 def checkPlayer():
     check = device.takeSnapshot(reconnect=True) #Check if governor profile opened. If it didn't, go to next one.
@@ -157,48 +116,5 @@ for x in range(4, 300):
             time.sleep(0.7) #wait for GUI to load :)
 
     process_gov(x)
-    continue
-
-    govgen = device.takeSnapshot(reconnect=True)
-    govgen.save(os.getcwd()+'\screens\\'+str(x)+'gov.png')
-    time.sleep(0.1)
-
-    """
-    device.shell('input tap 1340 375') #tap on detailed kills
-    #device.shell('input tap 1337 423') #tap on detailed kills
-    time.sleep(1) #wait for GUI to load :)
-    """
-
-    device.shell('input tap 800 340') #tap on name to copy on clipboard
-    time.sleep(0.5) #wait for copy
-
-    """
-    govkills = device.takeSnapshot(reconnect=True)
-    govkills.save(os.getcwd()+'\screens\\'+str(x)+'govkills.png')
-    time.sleep(0.1)
-
-    #device.shell('input tap 465 790') #open more info tab
-    device.shell('input tap 430 890') #open more info tab
-    time.sleep(0.4) #wait for GUI to load :)
-
-    govinfo = device.takeSnapshot(reconnect=True)
-    govinfo.save(os.getcwd()+'\screens\\'+str(x)+'govinfo.png')
-    time.sleep(0.1)
-    """
-
-    name = clipboard.paste() #save clipboard to variable
-
-    """
-    device.shell('input tap 1670 75') #close more info tab
-    time.sleep(0.5) #wait for GUI to load :)
-    """
-
-    device.shell('input tap 1619 140') #close governor profile
-    time.sleep(0.5) #wait for GUI to load :)
-
-    subprocess.Popen(['python', 'reader.py', str(x), name, timestr])
-    #subprocess.Popen(['reader.exe', str(x), name, timestr])
-    end_time = time.perf_counter()
-    print(f'It took {end_time-start_time: 0.2f} second(s) to complete.')
 
 print('Scan finished. Skipped '+str(skippedCounter)+' profile/s')
